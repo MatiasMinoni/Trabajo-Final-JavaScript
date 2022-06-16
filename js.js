@@ -11,11 +11,13 @@ fetch('campeones.json')
         // var select_ = document.createTextNode("Seleccionar");
         // select.setAttribute("class", "select waves-effect waves-light btn col offset-s5");
     
-        
+        console.log(datos[0].campeon)
         for(var i of datos){
             var nombre=(i.campeon);
             var iconos=(i.iconURL)   
-           
+           var ataque=(i.ataque);
+              var vida=(i.vida);
+
    var id=(i.id)
    
             var div_champ = document.createElement("div");
@@ -23,7 +25,6 @@ fetch('campeones.json')
             var nombres = document.createElement("h4");
             var iconos = document.createElement("img");
 
-  
     // Crear nodo de tipo Text
 
     var titulo = document.createTextNode(nombre);
@@ -35,10 +36,11 @@ fetch('campeones.json')
 // Atributos
 div_main.setAttribute("class","row" );
 div_champ.setAttribute("class","col s2 " );
-a_champ.setAttribute("class", "hitbox");
+a_champ.setAttribute("class", "hitbox" );
 a_champ.setAttribute("id", id);
-a_champ.setAttribute("name", nombre);
-
+a_champ.setAttribute("name", nombre );
+a_champ.setAttribute("data-ataque", ataque );
+a_champ.setAttribute("data-vida", vida );
     // Añadir el nodo Text como hijo del nodo tipo Element
     nombres.appendChild(titulo);
     iconos.appendChild(iconos_);
@@ -53,40 +55,128 @@ a_champ.setAttribute("name", nombre);
     a_champ.appendChild(nombres);
     a_champ.appendChild(iconos);
     div_champ.appendChild(a_champ);
+    
     // div_main.appendChild(select);
 
-     function anashe(){
-       var nuevo_pvp = document.createElement("fieldset");
-       var champ_azul = document.createElement("div");
-       var champ_rojo = document.createElement("div");
-       var titulo_rojo = document.createElement("h4");
-         var titulo_azul = document.createElement("h4");
-       var img_rojo = document.createElement("img");
-         var img_azul = document.createElement("img");
-        
-       document.body.appendChild(nuevo_pvp);
-       nuevo_pvp.appendChild(champ_azul);
-       nuevo_pvp.appendChild(champ_rojo);
-         champ_azul.appendChild(titulo_azul);
-         champ_rojo.appendChild(titulo_rojo);
-         champ_azul.appendChild(img_azul);
-         champ_rojo.appendChild(img_rojo);
-         champ_azul= nombre_a;
-
-     }
-
+//   ---------------------------------------------------------------
         // Funciones
         a_champ.addEventListener("click", function(){
+            
             var id = this.id;
-            console.log(id);
+            //  console.log(id);
+            var x = Math.floor(Math.random()*12);
+
             var nombre_a = this.name;
-            console.log(nombre_a);
+            var nombre_b = datos[x].campeon; 
+            var imagen_a= this.children[1].src;
+            var imagen_b=datos[x].iconURL ;
+            var vida_a= this.dataset.vida;
+            var ataque_a= this.dataset.ataque;
+            console.log("el ataque es " + ataque_a)
+            console.log("la vida es " + vida_a)
+attack_azul=ataque_a
+vida_azul=vida_a
+
+            // Stats del personaje seleccionado
+attack_azul=ataque_a;
+vida_azul=vida_a;
+
+
             alert("Has seleccionado: " + nombre_a);
+
         div_main.style.display = "none";
-            anashe()
+// ---------------------------------------------------------------
+        // createElement
+
+        var nuevo_pvp = document.createElement("fieldset");
+        var champ_azul = document.createElement("div");
+        var champ_rojo = document.createElement("div");
+        var titulo_rojo = document.createElement("h4");
+        var titulo_azul = document.createElement("h4");
+        var attack_azul = document.createElement("button");
+        var attack_rojo = document.createElement("button");
+        var parry_azul = document.createElement("button");
+        var parry_rojo = document.createElement("button");
+        var heal_azul = document.createElement("button");
+        var heal_rojo = document.createElement("button");
+        var img_rojo = document.createElement("img");
+          var img_azul = document.createElement("img");
+        
+          attack_azul_=document.createTextNode("Atacar");
+          attack_rojo_=document.createTextNode("Atacar");
+          parry_azul_=document.createTextNode("Parar");
+          parry_rojo_=document.createTextNode("Parar");
+          heal_azul_=document.createTextNode("Curar");
+          heal_rojo_=document.createTextNode("Curar");  
+
+// ---------------------------------------------------------------
+        //   appendChild
+          document.body.appendChild(nuevo_pvp);
+          nuevo_pvp.appendChild(champ_azul);
+          nuevo_pvp.appendChild(champ_rojo);
+            champ_azul.appendChild(titulo_azul);
+            champ_rojo.appendChild(titulo_rojo);
+            champ_azul.appendChild(img_azul);
+            champ_rojo.appendChild(img_rojo);
+              champ_azul.appendChild(attack_azul);
+              champ_azul.appendChild(parry_azul);
+              champ_azul.appendChild(heal_azul);
+              champ_rojo.appendChild(attack_rojo);
+              champ_rojo.appendChild(parry_rojo);
+              champ_rojo.appendChild(heal_rojo);
+       
+attack_azul.appendChild(attack_azul_)
+attack_rojo.appendChild(attack_rojo_)
+parry_azul.appendChild(parry_azul_)
+parry_rojo.appendChild(parry_rojo_)
+heal_azul.appendChild(heal_azul_)
+heal_rojo.appendChild(heal_rojo_)
+
+// ---------------------------------------------------------------------------------
+// Atribute
+    nuevo_pvp.setAttribute("class", "row");
+    champ_azul.setAttribute("class", "col s2");
+    img_azul.setAttribute("class", "icono");
+    champ_rojo.setAttribute("class", "col s2");
+    img_rojo.setAttribute("class", "icono");
+    attack_azul.setAttribute("id", "attack_azul");
+    attack_rojo.setAttribute("id", "attack_rojo");
+    parry_azul.setAttribute("id", "parry_azul");
+    parry_rojo.setAttribute("id", "parry_rojo");
+    heal_azul.setAttribute("id", "heal_azul");
+    heal_rojo.setAttribute("id", "heal_rojo");
+
+
+
+    // Getelement
+    attack_azul=document.getElementById("attack_azul");
+    
+    attack_rojo=document.getElementById("attack_rojo");
+    parry_azul=document.getElementById("parry_azul");
+    parry_rojo=document.getElementById("parry_rojo");
+    heal_azul=document.getElementById("heal_azul");
+    heal_rojo=document.getElementById("heal_rojo");
+    // titulo_azul=document.getElementById("titulo_azul");
+    // titulo_rojo=document.getElementById("titulo_rojo");
+    // img_azul=document.getElementById("img_azul");
+    // img_rojo=document.getElementById("img_rojo");
+
+// ---------------------------------------------------------------------------------
+    titulo_azul.innerHTML = nombre_a;    
+    
+    titulo_rojo.innerHTML = nombre_b;
+    img_azul.src= imagen_a
+    img_rojo.src= imagen_b
+
+    
+
         }
         );
+       
         
         }
     }
     );
+
+
+ 
