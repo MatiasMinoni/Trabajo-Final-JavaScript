@@ -11,7 +11,7 @@ fetch('campeones.json')
         // var select_ = document.createTextNode("Seleccionar");
         // select.setAttribute("class", "select waves-effect waves-light btn col offset-s5");
     
-        console.log(datos[0].campeon)
+  
         for(var i of datos){
             var nombre=(i.campeon);
             var iconos=(i.iconURL)   
@@ -72,18 +72,14 @@ a_champ.setAttribute("data-vida", vida );
             var imagen_b=datos[x].iconURL ;
             var vida_a= this.dataset.vida;
             var ataque_a= this.dataset.ataque;
-            console.log("el ataque es " + ataque_a)
-            console.log("la vida es " + vida_a)
+            var vida_b= datos[x].vida;
+            var ataque_b= datos[x].ataque;
 attack_azul=ataque_a
 vida_azul=vida_a
+attack_rojo=ataque_b
+vida_rojo=vida_b
 
-            // Stats del personaje seleccionado
-attack_azul=ataque_a;
-vida_azul=vida_a;
-
-
-            alert("Has seleccionado: " + nombre_a);
-
+    
         div_main.style.display = "none";
 // ---------------------------------------------------------------
         // createElement
@@ -161,6 +157,74 @@ heal_rojo.appendChild(heal_rojo_)
     // img_azul=document.getElementById("img_azul");
     // img_rojo=document.getElementById("img_rojo");
 
+attack_azul.addEventListener("click", function(){
+        attack_azul(ataque_a - vida_b);
+    console.log(vida_b);
+ 
+        while(vida_b>0){
+            vida_b=attack_azul;
+            console.log(vida_b);
+        }})
+    // function atacar(){
+    //     vida_rojo=(vida_b - 90);
+      
+    //     console.log( vida_rojo);
+    // }
+    // atacar()
+    // console.log(vida_b )
+//     attack_azul.addEventListener("click", function(){
+      
+//         attack_azul=(vida_b - ataque_a)
+//         console.log(vida_b)
+//         attack_azul.disabled=true;
+//         parry_azul.disabled=true;
+//         heal_azul.disabled=true;
+//         attack_rojo.disabled=false;
+//         parry_rojo.disabled=false;
+//         heal_rojo.disabled=false;
+// while(vida_b>0){
+//     attack_azul=(vida_b - ataque_a)
+// console.log(vida_b)
+// break
+//     }})
+
+
+
+    
+//     var ataque=document.getElementById("attack_ekko");
+// ataque.addEventListener("click", function(){
+//     ataque=(campeones[1].vida - campeones[0].daño);
+
+//     attack_ekko.disabled=true;
+//     parry_ekko.disabled=true;
+//     heal_ekko.disabled=true;
+//     attack_illaoi.disabled=false;
+//     parry_illaoi.disabled=false;
+//     heal_illaoi.disabled=false;
+// parry=20;
+//     while(campeones[1].vida>0){
+//         campeones[1].vida=ataque;
+//         if (ataque<=0){
+//             campeones[1].vida===0;
+//             swal.fire("Ganaste");
+//             swal.fire(campeones[1].vida);
+      
+//             break;
+//         }
+//       break
+
+//       }
+//         if(campeones[1].vida<=0){
+//             console.log("Ganaste");
+         
+//         }
+//     swal.fire("La vida de " + campeones[1].nombre + " es " + campeones[1].vida);
+//     attack_ekko.disabled=true;
+//     attack_illaoi.disabled=false
+
+// });
+
+    
 // ---------------------------------------------------------------------------------
     titulo_azul.innerHTML = nombre_a;    
     
@@ -172,6 +236,7 @@ heal_rojo.appendChild(heal_rojo_)
 
         }
         );
+
        
         
         }
