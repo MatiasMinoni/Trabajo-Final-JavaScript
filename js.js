@@ -74,13 +74,9 @@ a_champ.setAttribute("data-vida", vida );
             var ataque_a= this.dataset.ataque;
             var vida_b= datos[x].vida;
             var ataque_b= datos[x].ataque;
-attack_azul=ataque_a
-vida_azul=vida_a
-attack_rojo=ataque_b
-vida_rojo=vida_b
 
-    
         div_main.style.display = "none";
+
 // ---------------------------------------------------------------
         // createElement
 
@@ -121,6 +117,9 @@ vida_rojo=vida_b
               champ_rojo.appendChild(parry_rojo);
               champ_rojo.appendChild(heal_rojo);
        
+
+
+              
 attack_azul.appendChild(attack_azul_)
 attack_rojo.appendChild(attack_rojo_)
 parry_azul.appendChild(parry_azul_)
@@ -135,14 +134,72 @@ heal_rojo.appendChild(heal_rojo_)
     img_azul.setAttribute("class", "icono");
     champ_rojo.setAttribute("class", "col s2");
     img_rojo.setAttribute("class", "icono");
-    attack_azul.setAttribute("id", "attack_azul");
-    attack_rojo.setAttribute("id", "attack_rojo");
+
+    champ_azul.setAttribute("id", "campeon_azul");
+ 
+
+    // Campeon izquierdo
+   
+
+attack_azul.addEventListener("click", function(){
+    attack_azul=(vida_b-ataque_a)
+  
+attack_azul.disabled=true;
+parry_azul.disabled=true;
+heal_azul.disabled=true;
+attack_rojo.disabled=false;
+parry_rojo.disabled=false;
+heal_rojo.disabled=false;
+    
+    while(vida_b>0){
+        vida_b=vida_b-ataque_a
+        console.log(vida_b)
+        
+        break
+        
+    }
+    if(vida_b<=0){
+        swal.fire("Ganaste")
+      
+    }
+            })
+    
+
+            attack_rojo.addEventListener("click", function(){
+                attack_rojo=(vida_a-ataque_b)
+              
+            attack_azul.disabled=false;
+            parry_azul.disabled=false;
+            heal_azul.disabled=false;
+            attack_rojo.disabled=true;
+            parry_rojo.disabled=true;
+            heal_rojo.disabled=true;
+                
+                while(vida_a>0){
+                    vida_a=vida_a-ataque_b
+                    console.log(vida_a)
+                    
+                    break
+                    
+                }
+                if(vida_b<=0){
+                    swal.fire("Ganaste")
+                  
+                }
+                        })
+                
+            
+
+    champ_rojo.setAttribute("id", "campeon_azul");
+
+attack_azul.setAttribute("id", "attack_azul");
+attack_rojo.setAttribute("id", "attack_rojo");
     parry_azul.setAttribute("id", "parry_azul");
     parry_rojo.setAttribute("id", "parry_rojo");
     heal_azul.setAttribute("id", "heal_azul");
     heal_rojo.setAttribute("id", "heal_rojo");
 
-
+// fetch
 
     // Getelement
     attack_azul=document.getElementById("attack_azul");
@@ -157,74 +214,8 @@ heal_rojo.appendChild(heal_rojo_)
     // img_azul=document.getElementById("img_azul");
     // img_rojo=document.getElementById("img_rojo");
 
-attack_azul.addEventListener("click", function(){
-        attack_azul(ataque_a - vida_b);
-    console.log(vida_b);
- 
-        while(vida_b>0){
-            vida_b=attack_azul;
-            console.log(vida_b);
-        }})
-    // function atacar(){
-    //     vida_rojo=(vida_b - 90);
-      
-    //     console.log( vida_rojo);
-    // }
-    // atacar()
-    // console.log(vida_b )
-//     attack_azul.addEventListener("click", function(){
-      
-//         attack_azul=(vida_b - ataque_a)
-//         console.log(vida_b)
-//         attack_azul.disabled=true;
-//         parry_azul.disabled=true;
-//         heal_azul.disabled=true;
-//         attack_rojo.disabled=false;
-//         parry_rojo.disabled=false;
-//         heal_rojo.disabled=false;
-// while(vida_b>0){
-//     attack_azul=(vida_b - ataque_a)
-// console.log(vida_b)
-// break
-//     }})
-
-
-
     
-//     var ataque=document.getElementById("attack_ekko");
-// ataque.addEventListener("click", function(){
-//     ataque=(campeones[1].vida - campeones[0].daño);
 
-//     attack_ekko.disabled=true;
-//     parry_ekko.disabled=true;
-//     heal_ekko.disabled=true;
-//     attack_illaoi.disabled=false;
-//     parry_illaoi.disabled=false;
-//     heal_illaoi.disabled=false;
-// parry=20;
-//     while(campeones[1].vida>0){
-//         campeones[1].vida=ataque;
-//         if (ataque<=0){
-//             campeones[1].vida===0;
-//             swal.fire("Ganaste");
-//             swal.fire(campeones[1].vida);
-      
-//             break;
-//         }
-//       break
-
-//       }
-//         if(campeones[1].vida<=0){
-//             console.log("Ganaste");
-         
-//         }
-//     swal.fire("La vida de " + campeones[1].nombre + " es " + campeones[1].vida);
-//     attack_ekko.disabled=true;
-//     attack_illaoi.disabled=false
-
-// });
-
-    
 // ---------------------------------------------------------------------------------
     titulo_azul.innerHTML = nombre_a;    
     
