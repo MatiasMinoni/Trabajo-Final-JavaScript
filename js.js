@@ -3,7 +3,6 @@
 fetch('campeones.json')
     .then(res => res.json())
     .then(datos => {    
-        console.log(datos);
 
         var div_main = document.createElement("fieldset");
         // Boton seleccionar
@@ -63,7 +62,6 @@ a_champ.setAttribute("data-vida", vida );
         a_champ.addEventListener("click", function(){
             
             var id = this.id;
-            //  console.log(id);
             var x = Math.floor(Math.random()*12);
 
             var nombre_a = this.name;
@@ -205,8 +203,7 @@ swal.fire("La vida de "+nombre_b+" es: "+vida_b)
 //         parry=0
 //         while(vida_b>0){
 // vida_b=parry_azul
-// console.log(vida_b)
-// console.log(parry)
+
 // break
 //         }
 //     })
@@ -326,8 +323,7 @@ attack_rojo.addEventListener("click", function(){
 //                         vida_a=(vida_a - parry)
                         
 //             vida_a=parry_rojo
-//             console.log(vida_a)
-//             console.log(parry)
+//         
 //             break
 //                     }
 //                 })

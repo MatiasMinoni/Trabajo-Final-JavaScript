@@ -1,9 +1,8 @@
 body {
   background-color: bisque;
   font-family: 'Lobster', cursive;
-
-
-}
+  /* imagen */
+  background-image: url(../img/grieta.jpg); }
 
 img {
   width: 150%; 
@@ -35,3 +34,8 @@ margin-left: -25%;
     border-radius: 6px;
   } 
   
+  .tittle{
+    margin-left: 30%;
+    width: 30%;
+    
+  }
