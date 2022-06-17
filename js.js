@@ -130,83 +130,36 @@ heal_rojo.appendChild(heal_rojo_)
 // ---------------------------------------------------------------------------------
 // Atribute
     nuevo_pvp.setAttribute("class", "row");
-    champ_azul.setAttribute("class", "col s2");
+    champ_azul.setAttribute("class", "col s3");
     img_azul.setAttribute("class", "icono");
-    champ_rojo.setAttribute("class", "col s2");
+    champ_rojo.setAttribute("class", "col s3");
     img_rojo.setAttribute("class", "icono");
 
     champ_azul.setAttribute("id", "campeon_azul");
- 
 
-    // Campeon izquierdo
-   
-
-attack_azul.addEventListener("click", function(){
-    attack_azul=(vida_b-ataque_a)
-  
-attack_azul.disabled=true;
-parry_azul.disabled=true;
-heal_azul.disabled=true;
-attack_rojo.disabled=false;
-parry_rojo.disabled=false;
-heal_rojo.disabled=false;
-    
-    while(vida_b>0){
-        vida_b=vida_b-ataque_a
-        console.log(vida_b)
-        
-        break
-        
-    }
-    if(vida_b<=0){
-        swal.fire("Ganaste")
-      
-    }
-            })
-    
-
-            attack_rojo.addEventListener("click", function(){
-                attack_rojo=(vida_a-ataque_b)
-              
-            attack_azul.disabled=false;
-            parry_azul.disabled=false;
-            heal_azul.disabled=false;
-            attack_rojo.disabled=true;
-            parry_rojo.disabled=true;
-            heal_rojo.disabled=true;
-                
-                while(vida_a>0){
-                    vida_a=vida_a-ataque_b
-                    console.log(vida_a)
-                    
-                    break
-                    
-                }
-                if(vida_b<=0){
-                    swal.fire("Ganaste")
-                  
-                }
-                        })
-                
-            
 
     champ_rojo.setAttribute("id", "campeon_azul");
 
 attack_azul.setAttribute("id", "attack_azul");
+attack_azul.setAttribute("class", "waves-effect waves-light btn");
 attack_rojo.setAttribute("id", "attack_rojo");
+attack_rojo.setAttribute("class", "waves-effect waves-light btn");
     parry_azul.setAttribute("id", "parry_azul");
+    parry_azul.setAttribute("class", "waves-effect waves-light btn");
     parry_rojo.setAttribute("id", "parry_rojo");
+    parry_rojo.setAttribute("class", "waves-effect waves-light btn");
     heal_azul.setAttribute("id", "heal_azul");
+    heal_azul.setAttribute("class", "waves-effect waves-light btn");
     heal_rojo.setAttribute("id", "heal_rojo");
+    heal_rojo.setAttribute("class", "waves-effect waves-light btn");
 
-// fetch
 
     // Getelement
     attack_azul=document.getElementById("attack_azul");
     
     attack_rojo=document.getElementById("attack_rojo");
-    parry_azul=document.getElementById("parry_azul");
-    parry_rojo=document.getElementById("parry_rojo");
+    // parry_azul=document.getElementById("parry_azul");
+    // parry_rojo=document.getElementById("parry_rojo");
     heal_azul=document.getElementById("heal_azul");
     heal_rojo=document.getElementById("heal_rojo");
     // titulo_azul=document.getElementById("titulo_azul");
@@ -214,7 +167,196 @@ attack_rojo.setAttribute("id", "attack_rojo");
     // img_azul=document.getElementById("img_azul");
     // img_rojo=document.getElementById("img_rojo");
 
+    var parry=parseInt(0);
+
+attack_azul.addEventListener("click", function(){
+       
+        // attack_azul=(vida_b-ataque_a)
+
+
+        attack_azul.disabled=true;
+    parry_azul.disabled=true;
+    heal_azul.disabled=true;
+    attack_rojo.disabled=false;
+    parry_rojo.disabled=false;
+    heal_rojo.disabled=false;
+    parry=20;
     
+        while(vida_b>0){
+            vida_b=vida_b-ataque_a
+swal.fire("La vida de "+nombre_b+" es: "+vida_b)            
+            break
+            
+        }
+        if(vida_b<=0){
+            swal.fire("Ganaste")
+            setTimeout('document.location.reload()',3000);
+
+        }
+                })
+       
+// parry_azul.addEventListener("click", function(){
+// var parry_azul=(vida_b - parry)
+//         parry_azul.disabled=true;
+//         attack_azul.disabled=false;
+//         attack_rojo.disabled=false;
+//         heal_azul.disabled=false;
+//         heal_rojo.disabled=false;
+//         parry=0
+//         while(vida_b>0){
+// vida_b=parry_azul
+// console.log(vida_b)
+// console.log(parry)
+// break
+//         }
+//     })
+heal_azul.addEventListener("click", function(){
+              heal_azul.disabled=true;
+              heal_rojo.disabled=false;
+              attack_azul.disabled=true;
+              attack_rojo.disabled=false;
+              parry_azul.disabled=true;
+              parry_rojo.disabled=false;
+              parry=0;
+              while(vida_a<100){
+            vida_a=(vida_a+ 10)
+            swal.fire("Te Curaste 10 de vida",
+            "La vida de " + nombre_a + " es de " + vida_a,)
+            
+            break
+            
+        }
+              if (vida_a===100){
+            swal.fire("Tu vida esta completa",
+            "La vida de " + nombre_a + " es de " + vida_a,)
+
+        }})
+    
+    
+        var contraatacar=document.getElementById("parry_azul");
+        contraatacar.addEventListener("click", function(){
+            var contraatacar=(vida_b - parry)
+            parry=0
+            attack_azul.disabled=true;
+            attack_rojo.disabled=false;
+            heal_azul.disabled=true;
+            heal_rojo.disabled=false;
+            parry_azul.disabled=true;
+            parry_rojo.disabled=false;
+            while(vida_b>0){
+                vida_b=contraatacar
+                swal.fire("Contraatacaste a " + nombre_b + " su vida es de " + vida_b)
+                
+                break
+                
+            }
+            if(vida_b<=0){
+                swal.fire("Ganaste",
+                "La vida de " + nombre_b + " es de " + vida_b)
+                setTimeout('document.location.reload()',3000);
+            }
+        })
+        var contraatacar=document.getElementById("parry_rojo");
+        contraatacar.addEventListener("click", function(){
+            var contraatacar=(vida_a - parry)
+            parry=0
+            attack_azul.disabled=false;
+            attack_rojo.disabled=true;
+            heal_azul.disabled=false;
+            heal_rojo.disabled=true;
+            parry_azul.disabled=false;
+            parry_rojo.disabled=true;
+            while(vida_a>0){
+                vida_a=contraatacar
+                swal.fire("Contraatacaste a " + nombre_a + " su vida es de " + vida_a)
+
+                
+                break
+                
+            }
+            if (vida_a<=0){
+                swal.fire("Ganaste",
+                "La vida de " + nombre_a + " es de " + vida_a)
+                setTimeout('document.location.reload()',3000);
+            }                       
+
+        })
+        
+        
+attack_rojo.addEventListener("click", function(){
+                    
+    
+                    // attack_rojo=(vida_a-ataque_b)
+                   
+    
+                attack_azul.disabled=false;
+                parry_azul.disabled=false;
+                heal_azul.disabled=false;
+                attack_rojo.disabled=true;
+                parry_rojo.disabled=true;
+                heal_rojo.disabled=true;
+                    parry=20
+                    while(vida_a>0){
+                        vida_a=vida_a-ataque_b
+                        swal.fire("La vida de "+nombre_a+" es: "+vida_a)            
+                        
+                        break
+                        
+                    }
+                    if(vida_a<=0){
+                        swal.fire("Ganaste")
+                        setTimeout('document.location.reload()',3000);
+
+                    }
+                            })
+
+// parry_rojo.addEventListener("click", function(){
+
+//     parry_rojo.disabled=true;
+//     parry_azul.disabled=false;
+//     attack_azul.disabled=false;
+//     attack_rojo.disabled=true;
+//     heal_azul.disabled=false;
+//     heal_rojo.disabled=true;
+//                   var parry_rojo() 
+//     parry=0;
+                  
+                    
+//                     while(vida_a>0){
+//                         vida_a=(vida_a - parry)
+                        
+//             vida_a=parry_rojo
+//             console.log(vida_a)
+//             console.log(parry)
+//             break
+//                     }
+//                 })
+                    
+                
+heal_rojo.addEventListener("click", function(){
+             
+                    heal_rojo.disabled=true;
+                    attack_azul.disabled=false;
+                    attack_rojo.disabled=true;
+                    parry_azul.disabled=false;
+                    parry_rojo.disabled=true;
+                    heal_azul.disabled=false;
+                    parry=0;
+                  
+                    while(vida_b<100){
+                        vida_b=(vida_b+ 10)
+                        swal.fire("Te Curaste 10 de vida",
+                        "La vida de " + nombre_b + " es de " + vida_b)
+                        
+                        break
+                        
+                    }
+                    if (vida_b===100){
+                        swal.fire("Tu vida esta completa",
+                        "La vida de " + nombre_b + " es de " + vida_b)
+            
+                    }})
+                
 
 // ---------------------------------------------------------------------------------
     titulo_azul.innerHTML = nombre_a;    
